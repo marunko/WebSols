@@ -1,0 +1,78 @@
+
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Title of the document</title>
+</head>
+
+<body>
+
+    <div class="container">
+
+        <form action="" method="post" >
+            formula: Accumulator - (Exclusion -  Distribution)
+            <label>Side Exclusion</label>
+            <input type="number" placeholder="0" defaultValue="0">
+            <label>Side Accumulator</label>
+            <input type="number" placeholder="0" defaultValue="0">
+            <label>Exclusives Distribution</label>
+            <input type="number" defaultValue="0">
+            <input type="submit" placeholder="0" >
+        </form>
+        <div class="response">
+            <h1 class="actualMF"></h1>
+        </div>
+    </div>
+
+
+
+
+    <script>
+        var form = document.forms[0];
+        
+        form.addEventListener('submit', (event) => {
+            // handle the form data
+            event.preventDefault();
+             
+
+            var Exclusion = form.elements[0];
+            var Accumulator = form.elements[1];
+            var Excl_Distribution = form.elements[2];
+            if(!check(form.elements)){
+                console.log("Error");
+            }
+            else{
+                var res = Accumulator.value - (Exclusion.value - Excl_Distribution.value);
+                document.querySelector(".actualMF").innerHTML = res;
+                // reset 
+                for(let i =0; i < form.elements.length-1; i++){
+                    form.elements[i].value ="";
+                    form.elements[i].style = "border: 1px solid black;";
+                }
+            }
+             
+             
+            
+        });
+        
+        var check = (values)=>{
+            let flag = true;
+            console.log(values);
+            for(let i =0; i < values.length-1; i++){ // -1 exclude submit
+                if(values[i].value == 0){
+                    console.log(values[i].value);
+                    var element = values[i];
+                    element.style = "border: 1px solid red;";
+                    flag = false;
+                }
+                else{
+                    console.log(values[i].value);
+                }
+            }
+            return flag;
+        };
+    </script>
+
+</body>
+</html>
