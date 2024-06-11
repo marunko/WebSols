@@ -1,17 +1,11 @@
-console.log("Hello ");
+const express = require('express');
+const app = express();
+const port = 3000;
 
+app.get('/', (req, res) => {
+  res.send('Hello World!');
+});
 
-let a = function (params) {
-    
-    let nstring = new String();
-    
-    for(let i =0; i < params.length/2; i++){
-        let a = params.charAt(i);
-        nstring[params.length-i-1] = a;
-        nstring[i] = params.charAt(params.length -1-i);
-        console.log();
-    }
-
-    console.log(nstring);
-}
-a("adf;ljnt");
+app.listen(port, () => {
+  console.log(`Example app listening at http://localhost:${port}`);
+});
